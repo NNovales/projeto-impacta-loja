@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja IMPACTA | Ecommerce</title>
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='globais.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carrinho.css') }}">
+
+    
+</head>
+<body>
+    <div class="navbar">
+        <div class="header-inner-content">
+            <h1 class="logo">LOJA<span>IMPACTA</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </nav>
+
+            
+            
+            
+            <div class="nav-icon-container">
+                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="">
+                <img class="menu-button" src="{{ url_for('static', filename='images/menu.png') }}" alt="Exemplo">
+
+                <div class="user-info">
+                    {% if session.logged_in %}
+                        <p>Olá, {{ session.nome_usuario }}! Você está conectado.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    <header>
+       <div class="header-inner-content">
+        <div class="header-bottom-side">
+         <div class="header-bottom-side-left">
+           <h2>Um Novo Estilo ao Seu Trabalho</h2> 
+           <P>
+            Não subestime o poder da inspiração visual. Nossa camisa é mais do que um simples pedaço de tecido; é uma fonte constante de motivação. Com estampas criativas e motivadoras, cada olhar para o espelho é um lembrete do seu potencial ilimitado. Desde citações inspiradoras de figuras proeminentes da tecnologia até designs que celebram o espírito da inovação, cada detalhe é projetado para impulsionar a sua determinação.
+           </P>
+           <button>Comprar agora</button>
+         </div>
+         <div class="header-bottom-side-right">
+            <img src="{{ url_for('static', filename='images/camisa-ads.png') }}" alt="Exemplo">
+         </div>
+        </div>
+       </div> 
+    </header>
+
+<!-- MAIN CONTENT -->
+    <main>
+        <div class="gray-background">
+            <div class="page-inner-content">
+                <div class="cols cols-3">
+                    <img src="{{ url_for('static', filename='images/faco-programa.png') }}">
+                    <img src="{{ url_for('static', filename='images/code-coffee-repeat.png') }}">
+                    <img src="{{ url_for('static', filename='images/visual-studio.png') }}">
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="page-inner-content">
+                <h3 class="section-title" id = "produtos">Produtos Selecionados</h3>
+                <div class="subtitle-underline"></div>
+                <div class="cols cols-4">
+                    <div class="product">
+                        <img class="product-image" src="{{ url_for('static', filename='images/quadro1.jpg') }}">
+                        <p class="product-name">Quadro Código</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="product-price"><span>R$</span>80,00</p>
+                        <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                    </div>    
+                    <div class="product">
+                        <img class="product-image" src="{{ url_for('static', filename='images/quadro2.jpg') }}">
+                        <p class="product-name">Quadro Código 2</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="product-price"><span>R$</span>80,00 </p>
+                        <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                    </div>        
+                    <div class="product">
+                        <img class="product-image" src="{{ url_for('static', filename='images/quadro3.png') }}">
+                        <p class="product-name">Quadro Python</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="product-price"><span>R$</span>80,00 </p>
+                        <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                    </div>    
+                    <div class="product">
+                        <img class="product-image" src="{{ url_for('static', filename='images/quadro4.jpg') }}">
+                        <p class="product-name">Quadro Ciclo</p>
+                        <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                        <p class="product-price"><span>R$</span>80,00 </p>
+                        <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+
+                <div class="page-inner-content">
+                    <h3 class="section-title">Últimos Produtos</h3>
+                    <div class="subtitle-underline"></div>
+                    <div class="cols cols-4">
+                        <div class="product">
+                            <img class="product-image" src="{{ url_for('static', filename='images/iamprogrammer.png') }}">
+                            <p class="product-name">I'M A Programmer</p>
+                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                            <p class="product-price"><span>R$</span>80,00 </p>
+                            <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                        </div>    
+                        <div class="product">
+                            <img class="product-image" src="{{ url_for('static', filename='images/caneca-html.png') }}">
+                            <p class="product-name">Caneca < / > </p>
+                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                            <p class="product-price"><span>R$</span>80,00 </p>
+                            <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                        </div>        
+                        <div class="product">
+                            <img class="product-image" src="{{ url_for('static', filename='images/convert-coffee-code.png') }}">
+                            <p class="product-name">Convert caffeine Code</p>
+                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                            <p class="product-price"><span>R$</span>80,00 </p>
+                            <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                        </div>    
+                        <div class="product">
+                            <img class="product-image" src="{{ url_for('static', filename='images/programmer-.png') }}">
+                            <p class="product-name">Programmer</p>
+                            <p class="rate">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                            <p class="product-price"><span>R$</span>80,00 </p>
+                            <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <div class="gray-background">
+            <div class="header-inner-content">
+                <div class="header-bottom-side exclusive-container">
+                 <div class="header-bottom-side-left">
+                   <h2>Camisa BackEnd</h2> 
+                   <P>
+                    Dizem os sábios que ela dá superpoderes ao desenvolvedor que a utiliza.
+                   </P>
+                   <div class="product">
+                    <img class="product-image" src="{{ url_for('static', filename='images/vegeta.png') }}">
+                   <p class="product-name">Camisa BackEnd</p>
+                   <p class="product-price"><span>R$</span>8500,00</p>
+                   <button class="btn btn-primary shop-item-button">Adicionar ao carrinho</button>
+                   </div>
+                 </div>
+                 <div class="header-bottom-side-right">
+                    
+                    <img class="product-image" src="{{ url_for('static', filename='images/camisa-backend.png') }}">
+                 </div>
+                </div>
+               </div> 
+        </div>
+         
+        <section class="container content-section">
+            <h2 class="section-header">CARRINHO</h2>
+            <div class="cart-row" id="carrinho">
+                <span class="cart-item cart-header cart-column">ITEM</span>
+                <span class="cart-price cart-header cart-column">PREÇO</span>
+                <span class="cart-quantity cart-header cart-column">QUANTIDADE</span>
+            </div>
+            <div class="cart-items">
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span class="cart-total-price">R$0</span>
+            </div>
+            <button class="btn btn-primary btn-purchase" type="button">COMPRAR</button>
+        </section>
+                  
+         
+    </main>
+
+    <script>
+        const navbar = document.querySelector(".navbar");
+        const menuButton = document.querySelector(".menu-button")
+
+
+        menuButton.addEventListener("click", () => {
+            navbar.classList.toggle("show-menu");
+        });
+    </script>
+
+    <script src="../scripts/app.js"></script>
+
+   
+<img id="cart-icon" src="{{ url_for('static', filename='images/cart.png') }}" alt="" onclick="redirectToCart()">
+
+
+</body>
+</html>
