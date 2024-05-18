@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja IMPACTA | Ecommerce</title>
-    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>
+    
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='globais.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carrinho.css') }}">
 
-    
 </head>
 <body>
     <div class="navbar">
@@ -24,11 +23,9 @@
                 </ul>
             </nav>
 
-            
-            
-            
+                        
             <div class="nav-icon-container">
-                <img src="{{ url_for('static', filename='images/cart.png') }}" alt="">
+                <img id="cart-button"src="{{ url_for('static', filename='images/cart.png') }}" alt="">
                 <img class="menu-button" src="{{ url_for('static', filename='images/menu.png') }}" alt="Exemplo">
 
                 <div class="user-info">
@@ -50,7 +47,7 @@
            <P>
             Não subestime o poder da inspiração visual. Nossa camisa é mais do que um simples pedaço de tecido; é uma fonte constante de motivação. Com estampas criativas e motivadoras, cada olhar para o espelho é um lembrete do seu potencial ilimitado. Desde citações inspiradoras de figuras proeminentes da tecnologia até designs que celebram o espírito da inovação, cada detalhe é projetado para impulsionar a sua determinação.
            </P>
-           <button>Comprar agora</button>
+           <button onclick="location.href='#produtos'">Comprar agora</button>
          </div>
          <div class="header-bottom-side-right">
             <img src="{{ url_for('static', filename='images/camisa-ads.png') }}" alt="Exemplo">
@@ -167,6 +164,7 @@
                </div> 
         </div>
          
+        <div id="cart" class="cart">
         <section class="container content-section">
             <h2 class="section-header">CARRINHO</h2>
             <div class="cart-row" id="carrinho">
@@ -181,8 +179,30 @@
                 <span class="cart-total-price">R$0</span>
             </div>
             <button class="btn btn-primary btn-purchase" type="button">COMPRAR</button>
+        
+            <div class="cart-footer">
+                <div class="cep-input">
+                    <input type="text" id="cep-input" placeholder="Digite seu CEP">
+                    <button id="calculate-freight">Verificar CEP</button>
+                </div>
+                <div id="cep-result" class="cep-result"></div>
+                
+                    
+                </div>
+                
+            </div>
+               
+                
+                    
+                    
+                </div>
+                
+            </div>
+            
+                
+            
         </section>
-                  
+    </div>          
          
     </main>
 
@@ -196,7 +216,7 @@
         });
     </script>
 
-    <script src="../scripts/app.js"></script>
+    <script src="../static/scripts/app.js"></script>
 
    
 <img id="cart-icon" src="{{ url_for('static', filename='images/cart.png') }}" alt="" onclick="redirectToCart()">

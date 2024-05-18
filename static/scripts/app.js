@@ -8,6 +8,15 @@ function ready() {
     document.querySelector('.btn-purchase').addEventListener('click', purchaseClicked);
 }
 
+// Seleciona o botão do carrinho e o carrinho
+var cartButton = document.getElementById('cart-button');
+var cart = document.getElementById('cart');
+
+// Abre/fecha o carrinho
+cartButton.addEventListener('click', function() {
+    cart.classList.toggle('open');
+})
+
 // Função para adicionar item ao carrinho
 function addToCartClicked(event) {
     var button = event.target;
@@ -83,7 +92,7 @@ function quantityChanged(event) {
 
 // Função para lidar com o clique no botão de compra
 function purchaseClicked() {
-    alert('Obrigado pela sua compra!');
+    alert('Obrigado pela sua compra! em até 15 dias estaremos entregando a sua encomenda. :D');
     var cartItems = document.querySelector('.cart-items');
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild);
@@ -97,3 +106,41 @@ if (document.readyState == 'loading') {
 } else {
     ready();
 }
+
+
+document.getElementById('calculate-freight').addEventListener('click', function() {
+    var cep = document.getElementById('cep-input').value;
+    
+    if (cep) {
+        // Remove any non-digit characters from the input
+        cep = cep.replace(/\D/g, '');
+        
+        if (cep.length === 8) {
+            // Fetch data from ViaCEP API
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        // Display the address data
+                        document.getElementById('cep-result').innerHTML = `
+                            <p>CEP: ${data.cep}</p>
+                            <p>Logradouro: ${data.logradouro}</p>
+                            <p>Bairro: ${data.bairro}</p>
+                            <p>Cidade: ${data.localidade}</p>
+                            <p>Estado: ${data.uf}</p>
+                        `;
+                    } else {
+                        document.getElementById('cep-result').innerHTML = `<p>CEP não encontrado.</p>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o CEP:', error);
+                    document.getElementById('cep-result').innerHTML = `<p>Erro ao buscar o CEP.</p>`;
+                });
+        } else {
+            document.getElementById('cep-result').innerHTML = `<p>CEP inválido.</p>`;
+        }
+    } else {
+        document.getElementById('cep-result').innerHTML = `<p>Por favor, insira um CEP.</p>`;
+    }
+});

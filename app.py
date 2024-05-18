@@ -55,12 +55,14 @@ def cadastrar():
                 conn.commit()
                 cursor.close()
                 conn.close()
-                return 'Cadastro realizado com sucesso!'
+                flash('Cadastro realizado com sucesso!')
+                return redirect(url_for('index'))
             except pymysql.Error as e:
                 logging.error("Erro ao cadastrar usuário: %s", str(e))
                 return 'Erro ao cadastrar usuário. Por favor, tente novamente.'
         else:
-            return 'Erro ao conectar-se ao banco de dados.'
+            flash('Erro ao conectar-se ao banco de dados.')
+            return redirect(url_for('cadastro'))
         
 
 # Rota para a página de login
@@ -107,6 +109,10 @@ def contato():
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')
+
+@app.route('/carrinho')
+def carrinho():
+    return render_template('carrinho.html')
 
 
 if __name__ == '__main__':
