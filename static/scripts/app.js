@@ -6,6 +6,9 @@ function ready() {
     });
 
     document.querySelector('.btn-purchase').addEventListener('click', purchaseClicked);
+
+    // Event listener para aplicar cupom de desconto
+    document.getElementById('apply-coupon').addEventListener('click', applyCoupon);
 }
 
 // Seleciona o botão do carrinho e o carrinho
@@ -15,7 +18,7 @@ var cart = document.getElementById('cart');
 // Abre/fecha o carrinho
 cartButton.addEventListener('click', function() {
     cart.classList.toggle('open');
-})
+});
 
 // Função para adicionar item ao carrinho
 function addToCartClicked(event) {
@@ -30,7 +33,6 @@ function addToCartClicked(event) {
 
 // Função para criar uma nova linha no carrinho
 function addItemToCart(title, price, imageSrc) {
-    
     var cartRow = document.createElement('div');
     cartRow.classList.add('cart-row');
     var cartItems = document.querySelector('.cart-items');
@@ -100,6 +102,24 @@ function purchaseClicked() {
     updateCartTotal();
 }
 
+// Função para aplicar cupom de desconto
+function applyCoupon() {
+    var couponInput = document.getElementById('coupon-input').value;
+    var discountRate = 0.10; // 10% de desconto
+
+    // Verifica se o cupom é válido
+    if (couponInput === 'DESCONTO10') {
+        var totalElement = document.querySelector('.cart-total-price');
+        var total = parseFloat(totalElement.textContent.replace('R$', '').replace(',', '.'));
+        var discountedTotal = total * (1 - discountRate);
+        discountedTotal = Math.round(discountedTotal * 100) / 100;
+        totalElement.innerText = 'R$' + discountedTotal.toFixed(2);
+        alert('Cupom aplicado com sucesso! 10% de desconto.');
+    } else {
+        alert('Cupom inválido.');
+    }
+}
+
 // Verifica se o DOM já está carregado e executa a função ready()
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready);
@@ -107,14 +127,14 @@ if (document.readyState == 'loading') {
     ready();
 }
 
-
+// Função para calcular o frete com base no CEP
 document.getElementById('calculate-freight').addEventListener('click', function() {
     var cep = document.getElementById('cep-input').value;
-    
+
     if (cep) {
         // Remove any non-digit characters from the input
         cep = cep.replace(/\D/g, '');
-        
+
         if (cep.length === 8) {
             // Fetch data from ViaCEP API
             fetch(`https://viacep.com.br/ws/${cep}/json/`)
